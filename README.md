@@ -120,13 +120,7 @@ Ningún framework de JS. Ningún backend. Solo front-end puro con las herramient
 
 ## 🚀 Cómo levantar el proyecto
 
-```bash
-# 1. Clonar
-git clone https://github.com/tuusuario/spacefit-ecommerce.git
-
-# 2. Abrir index.html en el navegador
-# (No necesita servidor ni build)
-```
+🔗 **Link del proyecto desplegado:** [https://spacefit-ecommerce.netlify.app/](https://spacefit-ecommerce.netlify.app/)
 
 Si modificás los estilos SCSS:
 
