@@ -7,6 +7,10 @@ header {
     background-color: #fff;
 }
 
+header > div:first-child {
+    border-radius: 0 !important;
+}
+
 .offcanvas-backdrop,
 .modal-backdrop {
     z-index: 1055 !important;
