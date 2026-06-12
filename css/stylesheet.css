@@ -694,4 +694,37 @@ header {
   box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.08);
 }
 
+/* Fix completo - alineación de botones en cards */
+.row > [class*="col"] {
+  display: flex;
+}
+
+.tarjeta {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.tarjeta-cuerpo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.tarjeta-cuerpo h3, .tarjeta-cuerpo span {
+  flex-grow: 1;
+}
+
+.tarjeta-cuerpo .contenedor-boton {
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
 
