@@ -32,18 +32,18 @@ class Producto {
     }
 
     descripcionHTML() {
-        return   `<div class="tarjeta flex-grow-1">
+        return   `<div class="tarjeta h-100">
         <div class="tarjeta__imagenContainer">
             <img src="${imgPath(this.img)}">
      </div>
 
-    <div class="tarjeta-cuerpo">
+    <div class="tarjeta-cuerpo d-flex flex-column">
 
         <h3 class="fs-6">${this.nombre}</h3>
         <span class="fs-6 fw-bold">$${this.precio}</span>
 
     
-        <div class="contenedor-boton" id="añadir_producto-${this.id}">
+        <div class="contenedor-boton mt-auto" id="añadir_producto-${this.id}">
             <div class="btn btn-comprar btn-sm w-100" id="Añadir_producto-${this.id}">
 
             <span>Agregar al carrito</span>
