@@ -1,11 +1,59 @@
 
 .Micarrusel{
     background-color: black;
-
+    overflow: hidden;
 }
+
 .carrusel__imagen{
-    
-    height: 45rem;
-    object-fit: fill
+    height: 75vh;
+    max-height: 600px;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.carousel-caption{
+    position: absolute;
+    bottom: 5rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.carousel-caption .btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 1.2rem;
+}
+
+.carousel-indicators button{
+    background-color: white !important;
+}
+
+@media screen and (max-width: 775px){
+    .carrusel__imagen{
+        height: 25rem;
+    }
+    .carousel-caption{
+        bottom: 3rem;
+    }
+    .carousel-caption .btn{
+        height: 2.5rem;
+        padding: 0 1.2rem;
+    }
+}
+
+@media screen and (max-width: 470px){
+    .carrusel__imagen{
+        height: 18rem;
+    }
+    .carousel-caption{
+        bottom: 2.5rem;
+    }
+    .carousel-caption .btn{
+        height: 2.2rem;
+        padding: 0 1rem;
+        font-size: 0.8rem;
+    }
 }
 

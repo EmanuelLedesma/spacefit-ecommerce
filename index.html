@@ -5,523 +5,252 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preentrega CoderHouse</title>
+    <title>SPACEFIT - Tienda de indumentaria fitness</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&family=Vina+Sans&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Vina+Sans&family=Koulen&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="./css/stylesheet.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&family=Vina+Sans&display=swap"
-        rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-
+<link rel="icon" type="image/x-icon" href="iconoSpaceFit.ico">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
-    <div class="cuotas">
-        <span>3 cuotas sin interes</span>
-    </div>
+    <header class="header sticky-top w-100">
+        <div class="bg-dark text-white text-center py-1 w-100 m-0" style="font-size: 0.85rem; letter-spacing: 1px;">3 cuotas sin interés</div>
 
-
-    <header class="header">
-
-        <nav class="navbar navbar-expand-lg navbar-light header__nav ">
+        <nav class="navbar navbar-expand-lg navbar-light header__nav bg-white shadow-sm">
             <div class="container-fluid">
-                <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse " id="navbarNav">
-                    <ul class="navbar-nav ">
-                        <li class="nav-item ">
-                            <a class="nav-link" href="./pages/hombres.html">Hombres</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./pages/mujeres.html">Mujeres</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./pages/Nuevos_lanzamientos.html">Nuevos lanzamientos</a>
-                        </li>
+
+                <!-- ===== MOBILE (< 992px) ===== -->
+                <div class="d-lg-none d-flex align-items-center position-relative w-100">
+
+                    <div class="d-flex align-items-center gap-3 order-1">
+                        <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav"
+                            aria-controls="offcanvasNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="header__navSearch d-md-none">
+                            <img src="./Imagenes/Iconos/lupa.png" alt="Buscar" data-bs-toggle="offcanvas" data-bs-target="#searchOffcanvas">
+                        </div>
+                    </div>
+
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav" aria-labelledby="offcanvasNavLabel">
+                        <div class="offcanvas-header border-bottom">
+                            <h5 class="offcanvas-title" id="offcanvasNavLabel">Menú</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav text-start ps-3 mt-2">
+                                <li class="nav-item"><a class="nav-link fs-6" href="./pages/hombres.html"><span>Hombres</span></a></li>
+                                <li class="nav-item"><a class="nav-link fs-6" href="./pages/mujeres.html"><span>Mujeres</span></a></li>
+                                <li class="nav-item"><a class="nav-link fs-6" href="./pages/Nuevos_lanzamientos.html"><span>Nuevos lanzamientos</span></a></li>
+                                <li class="nav-item"><a class="nav-link fs-6" href="./pages/Accesorios gym.html"><span>Accesorios</span></a></li>
+                                <li class="nav-item"><a class="nav-link fs-6" href="./pages/Suplementos.html"><span>Suplementos</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="header__containerTitle order-2">
+                        <h1 class="header__title"><a href="./index.html">SPACEFIT</a></h1>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3 header__right order-4 ms-auto">
+                        <img src="./Imagenes/Iconos/usuario.png" alt="icono para iniciar cuenta" data-bs-toggle="modal" data-bs-target="#modalCuenta" style="cursor: pointer;">
+                        <img src="./Imagenes/Iconos/lupa.png" alt="Buscar" data-bs-toggle="offcanvas" data-bs-target="#searchOffcanvas" class="d-none d-md-inline-block">
+                        <img src="./Imagenes/Iconos/carrito-de-compras.png" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+                    </div>
+
+                </div>
+
+                <!-- ===== DESKTOP (>= 992px) ===== -->
+
+                <!-- Row 1: Logo + Icons -->
+                <div class="d-none d-lg-flex align-items-center position-relative py-3 w-100">
+                    <div class="header__title position-absolute start-50 translate-middle-x">
+                        <a href="./index.html" class="text-decoration-none">SPACEFIT</a>
+                    </div>
+                    <div class="header__right ms-auto me-4">
+                        <img src="./Imagenes/Iconos/usuario.png" alt="icono para iniciar cuenta" data-bs-toggle="modal" data-bs-target="#modalCuenta" style="cursor: pointer;">
+                        <img src="./Imagenes/Iconos/lupa.png" alt="Buscar" data-bs-toggle="offcanvas" data-bs-target="#searchOffcanvas">
+                        <img src="./Imagenes/Iconos/carrito-de-compras.png" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+                    </div>
+                </div>
+
+                <!-- Row 2: Nav links -->
+                <div class="d-none d-lg-flex justify-content-center py-2 w-100">
+                    <ul class="nav gap-4">
+                        <li class="nav-item"><a class="nav-link fs-6 text-dark" href="./pages/hombres.html"><span>Hombres</span></a></li>
+                        <li class="nav-item"><a class="nav-link fs-6 text-dark" href="./pages/mujeres.html"><span>Mujeres</span></a></li>
+                        <li class="nav-item"><a class="nav-link fs-6 text-dark" href="./pages/Nuevos_lanzamientos.html"><span>Nuevos lanzamientos</span></a></li>
+                        <li class="nav-item"><a class="nav-link fs-6 text-dark" href="./pages/Accesorios gym.html"><span>Accesorios</span></a></li>
+                        <li class="nav-item"><a class="nav-link fs-6 text-dark" href="./pages/Suplementos.html"><span>Suplementos</span></a></li>
                     </ul>
                 </div>
+
             </div>
         </nav>
 
-        <div class="header__containerTitle">
-
-            <h1 class="header__title"><a href="/index.html">SPACEFIT</a></h1>
-
-        </div>
-
-        <div class="header__containerIcons">
-
-            <div class="header__icons">
-
-                <img src="./Imagenes/Iconos/usuario.png" alt="icono para iniciar cuenta">
-
-                <img src="./imagenes/Iconos/lupa.png" alt="Buscar">
-
-                <img src="./Imagenes/Iconos/carrito-de-compras.png" type="button" class=" header__icons"
-                    data-bs-toggle="modal" data-bs-target="#exampleModal">
-
-
-
-
-            </div>
-
-        </div>
-
     </header>
 
-    <!-- Button trigger modal -->
 
 
-    <!-- Modal bootstrap -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <main class="flex-grow-1">
 
-
-    <main>
-
-        <!-- section para luego poner un carrusel -->
-        <div id="carouselExampleDark" class="carousel carousel-dark slide Micarrusel">
+        <div id="carouselExample" class="carousel slide Micarrusel" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"
                     aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"
                     aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="10000">
+                <div class="carousel-item active" data-bs-interval="5000">
                     <img src="./Imagenes/carrusel/Carrusel Youngla.png" class="d-block w-100 carrusel__imagen"
-                        alt="...">
-                    <div class="carousel-caption d-md-block">
+                        alt="Joggers Youngla de alta calidad">
+                    <div class="carousel-caption d-block">
                         <div class="contenedor-boton">
-
                             <div class="btn">
-
                                 <a href="./pages/Pantalones-shorts.html">Comprar ahora</a>
-
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item" data-bs-interval="2000">
-                    <img src="./Imagenes/carrusel/Suplementos-carrusel.png" class="d-block w-100 carrusel__imagen"
-                        alt="...">
-                    <div class="carousel-caption d-md-block">
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="./Imagenes/carrusel/Chicas-carrusel.png" class="d-block w-100 carrusel__imagen"
+                        alt="indumentaria deportiva de chicas que vendra pronto">
+                    <div class="carousel-caption d-block">
                         <div class="contenedor-boton">
-
                             <div class="btn">
-
-                                <a href="./pages/Suplementos.html">Comprar ahora</a>
-
+                                <a href="./pages/mujeres.html">Ver más</a>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item carrusel__imagen">
-                    <img src="./Imagenes/carrusel/Gymsuit-carrusel.png" class="d-block w-100 carrusel__imagen"
-                        alt="...">
-                    <div class="carousel-caption d-md-block">
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="./Imagenes/carrusel/shorts-carrusel.png" class="d-block w-100 carrusel__imagen"
+                        alt="shorts comodos para entrenar o salir">
+                    <div class="carousel-caption d-block">
                         <div class="contenedor-boton">
-
                             <div class="btn">
-
-                                <a href="./pages/mujeres.html">Comprar ahora</a>
-
+                                <a href="./pages/Pantalones-shorts.html">Comprar ahora</a>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
                 data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
 
-        <nav class="nav animate__animated animate__fadeInDown">
-
-            <ul>
-
-                <li class="nav__item"><a href="./pages/Accesorios gym.html">Accesorios gym</a></li>
-
-                <li class="nav__item"><a href="./pages/Suplementos.html">Suplementos</a></li>
-
-                <li class="nav__item"><a href="./pages/contacto.html">Contacto</a></li>
-
-            </ul>
-
-        </nav>
-
         <h2 class="best-seller">Lo mas vendido</h2>
 
-        <section class="contenedor-tarjetas">
+        <section class="contenedor_tarjetas" id="contenedor_tarjetas">
 
-            <div class="tarjeta" data-aos="fade-up" data-aos-once="true" data-aos-duration="800">
-                <div class="tarjeta__imagenContainer">
-                    <img src="../Imagenes/Pantalones/Yogger-ambitius-Youngla.png"
-                        alt="Yogger ambitius Youngla, pantalon con tela de alta calidad, muy confortable y estiloso para entrenar ">
-                </div>
-
-                <div class="tarjeta-cuerpo">
-
-                    <h3>Yogger ambitius Youngla</h3>
-
-                    <span>$30.000</span>
-
-                    <div class="contenedor-boton">
-
-                        <div class="btn">
-
-                            <span>Comprar</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="tarjeta" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
-                <div class="tarjeta__imagenContainer">
-                    <img src="../Imagenes/remeras/Remera Shark slimfit.png" alt="Remera entallada negra shark slimfit">
-                </div>
-
-                <div class="tarjeta-cuerpo">
-
-                    <h3>Remera Shark slimfit</h3>
-
-                    <span>$8.000</span>
-
-                    <div class="contenedor-boton">
-
-                        <div class="btn">
-
-                            <span>Comprar</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="tarjeta" data-aos="fade-up" data-aos-once="true" data-aos-duration="1200">
-                <div class="tarjeta__imagenContainer">
-                    <img src="../Imagenes/Sudaderas/HUMMINGBIRD hoodie.png" alt="buzo corto y lindo para chicas">
-                </div>
-
-                <div class="tarjeta-cuerpo">
-
-                    <h3>Hummingbird hoodie</h3>
-
-                    <span>$17.000</span>
-
-                    <div class="contenedor-boton">
-
-                        <div class="btn">
-
-                            <span>Comprar</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="tarjeta" data-aos="fade-up" data-aos-once="true" data-aos-duration="1400">
-                <div class="tarjeta__imagenContainer">
-                    <img src="../Imagenes/remeras/Roman tees Youngla.png"
-                        alt="Remera essensial de alta calidad y algodon que tiene que estar en tu guardaropa de youngla">
-                </div>
-
-                <div class="tarjeta-cuerpo">
-
-                    <h3>Roman tees Youngla</h3>
-
-                    <span>$14.000</span>
-
-                    <div class="contenedor-boton">
-
-                        <div class="btn">
-
-                            <span>Comprar</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="tarjeta" data-aos="fade-up" data-aos-once="true" data-aos-duration="800">
-                <div class="tarjeta__imagenContainer">
-                    <img src="../Imagenes/Musculosas/MOMENTUM TANKS.png" alt="Musculosa cerrada negra Youngla">
-                </div>
-
-                <div class="tarjeta-cuerpo">
-
-                    <h3>Momentum tanks</h3>
-
-                    <span>$14.000</span>
-
-                    <div class="contenedor-boton">
-
-                        <div class="btn">
-
-                            <span>Comprar</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="tarjeta" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
-                <div class="tarjeta__imagenContainer">
-                    <img src="../Imagenes/Sudaderas/COLLEGIATE HOODIE.png"
-                        alt="buzo gymshark color crema estiloso y comodo para salir o entrenar">
-                </div>
-
-                <div class="tarjeta-cuerpo">
-
-                    <h3>Collegiate Hoodie</h3>
-
-                    <span>$20.000</span>
-
-                    <div class="contenedor-boton">
-
-                        <div class="btn">
-
-                            <span>Comprar</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="tarjeta" data-aos="fade-up" data-aos-once="true" data-aos-duration="1200">
-                <div class="tarjeta__imagenContainer">
-                    <img src="../Imagenes/Pantalones/Short-negro-Youngla.png"
-                        alt="Short negro Youngla de alta calidad para entrenar y tener una buena movilidad">
-                </div>
-
-                <div class="tarjeta-cuerpo">
-
-                    <h3>Short negro Youngla</h3>
-
-                    <span>$15.000</span>
-
-                    <div class="contenedor-boton">
-
-                        <div class="btn">
-
-                            <span>Comprar</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="tarjeta" data-aos="fade-up" data-aos-once="true" data-aos-duration="1400">
-                <div class="tarjeta__imagenContainer">
-                    <img src="../Imagenes/accesorios/Straps.png"
-                        alt="Straps wildfitness para un mejor rendimiento en ejercicios que carguen el antebrazo">
-                </div>
-
-                <div class="tarjeta-cuerpo">
-
-                    <h3>Straps wildfitness</h3>
-
-                    <span>$7.000</span>
-
-                    <div class="contenedor-boton">
-
-                        <div class="btn">
-
-                            <span>Comprar</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
+            
 
         </section>
 
-        <div class="contenedor-boton">
+        <div class="contenedor-boton" id="btn-ver-mas">
 
             <div class="btn">
 
-                <a href="./pages/hombres.html">VER MÁS</a>
+                <span>VER MÁS</span>
 
             </div>
 
         </div>
 
-        <section class="contenedor__categorias">
+        <section class="container contenedor__categorias">
+            <div class="row justify-content-center g-3">
 
-            <div class="categorias" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000"> <img
-                    class="categorias__img" src="./Imagenes/accesorios/Cinturon Wildfitness.png"
-                    alt="Accesorios gym para el mejor rendimiento deportivo">
+                <div class="col-6 col-lg-5">
+                    <a href="./pages/accesorios gym.html" class="categorias" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000"> <img class="categorias__img" src="./Imagenes/accesorios/Cinturon Wildfitness.png" alt="Accesorios gym para el mejor rendimiento deportivo">
+                        <div>
+                            <h3 class="categorias__texto">SPACEFIT</h3>
+                            <h2 class="categorias__texto">ACCESORIOS GYM</h2>
+                            <div class="categorias__accion">
+                                <span class="btn btn--ghost">VER MÁS</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
-                <div>
-                    <h3 class="categorias__texto">SPACEFIT</h3>
+                <div class="col-6 col-lg-5">
+                    <a href="./pages/Remeras.html" class="categorias" data-aos="fade-up" data-aos-once="true" data-aos-duration="1200"> <img class="categorias__img" src="./Imagenes/remeras/Roman-tees-Youngla.png" alt="Remeras de alta calidad tanto como para usar como essensials o para entrenar">
+                        <div>
+                            <h3 class="categorias__texto">SPACEFIT</h3>
+                            <h2 class="categorias__texto">CAMISETAS</h2>
+                            <div class="categorias__accion">
+                                <span class="btn btn--ghost">VER MÁS</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
-                    <h2 class="categorias__texto">ACCESORIOS GYM</h2>
+                <div class="col-6 col-lg-5">
+                    <a href="./pages/Sudaderas.html" class="categorias" data-aos="fade-up" data-aos-once="true" data-aos-duration="1400"> <img class="categorias__img" src="./Imagenes/Sudaderas/CROPPED HOODIE.png" alt="Sudaderas de alta calidad">
+                        <div>
+                            <h3 class="categorias__texto">SPACEFIT</h3>
+                            <h2 class="categorias__texto">SUDADERAS</h2>
+                            <div class="categorias__accion">
+                                <span class="btn btn--ghost">VER MÁS</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
-                    <div>
+                <div class="col-6 col-lg-5">
+                    <a href="./pages/Musculosas.html" class="categorias" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000"> <img class="categorias__img" src="./Imagenes/Musculosas/SIGNATURE TANKS.png" alt="Musculosas para entrenar frezco y lucirse">
+                        <div>
+                            <h3 class="categorias__texto">SPACEFIT</h3>
+                            <h2 class="categorias__texto">MUSCULOSAS</h2>
+                            <div class="categorias__accion">
+                                <span class="btn btn--ghost">VER MÁS</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
-                        <a href="./pages/accesorios gym.html" class="btn">VER MÁS</a>
+                <div class="col-6 col-lg-5">
+                    <a href="./pages/Pantalones-shorts.html" class="categorias" data-aos="fade-up" data-aos-once="true" data-aos-duration="1200"> <img class="categorias__img" src="./Imagenes/Pantalones/Yogger-ambitius-Youngla.png" alt="">
+                        <div>
+                            <h3 class="categorias__texto">SPACEFIT</h3>
+                            <h2 class="categorias__texto">PANTALONES/SHORTS</h2>
+                            <div class="categorias__accion">
+                                <span class="btn btn--ghost">VER MÁS</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
-                    </div>
+                <div class="col-6 col-lg-5">
+                    <a href="./pages/Suplementos.html" class="categorias" data-aos="fade-up" data-aos-once="true" data-aos-duration="1400"><img class="categorias__img--suplementos" src="./Imagenes/suplementos/Ganador de masa.png" alt="Suplementos para aumentar el rendimiento en el gym">
+                        <div>
+                            <h3 class="categorias__texto">SPACEFIT</h3>
+                            <h2 class="categorias__texto">SUPLEMENTOS</h2>
+                            <div class="categorias__accion">
+                                <span class="btn btn--ghost">VER MÁS</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
 
             </div>
-
-            <div class="categorias" data-aos="fade-up" data-aos-once="true" data-aos-duration="1200"> <img
-                    class="categorias__img" src="./Imagenes/remeras/Roman tees Youngla.png"
-                    alt="Remeras de alta calidad tanto como para usar como essensials o para entrenar">
-
-                <div>
-                    <h3 class="categorias__texto">SPACEFIT</h3>
-
-                    <h2 class="categorias__texto">CAMISETAS</h2>
-
-                    <div>
-
-                        <a href="./pages/Remeras.html" class="btn">VER MÁS</a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="categorias" data-aos="fade-up" data-aos-once="true" data-aos-duration="1400"> <img
-                    class="categorias__img" src="./Imagenes/Sudaderas/CROPPED HOODIE.png"
-                    alt="Sudaderas de alta calidad">
-
-                <div>
-                    <h3 class="categorias__texto">SPACEFIT</h3>
-
-                    <h2 class="categorias__texto">SUDADERAS</h2>
-
-                    <div>
-
-                        <a href="./pages/Sudaderas.html" class="btn">VER MÁS</a>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="categorias" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000"> <img
-                    class="categorias__img" src="/Imagenes/Musculosas/SIGNATURE TANKS.png"
-                    alt="Musculosas para entrenar frezco y lucirse">
-
-                <div>
-                    <h3 class="categorias__texto">SPACEFIT</h3>
-
-                    <h2 class="categorias__texto">MUSCULOSAS</h2>
-
-                    <div>
-
-                        <a href="./pages/Musculosas.html" class="btn">VER MÁS</a>
-
-                    </div>
-                </div>
-
-
-            </div>
-
-            <div class="categorias" data-aos="fade-up" data-aos-once="true" data-aos-duration="1200"> <img
-                    class="categorias__img" src="./Imagenes/Pantalones/Yogger-ambitius-Youngla.png" alt="">
-
-                <div>
-                    <h3 class="categorias__texto">SPACEFIT</h3>
-
-                    <h2 class="categorias__texto">PANTALONES/SHORTS</h2>
-
-                    <div>
-
-                        <a href="./pages/Pantalones-shorts.html" class="btn">VER MÁS</a>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="categorias" data-aos="fade-up" data-aos-once="true" data-aos-duration="1400"><img
-                    class="categorias__img--suplementos" src="./Imagenes/suplementos/Ganador de masa.png"
-                    alt="Suplementos para aumentar el rendimiento en el gym">
-
-                <div>
-                    <h3 class="categorias__texto">SPACEFIT</h3>
-
-                    <h2 class="categorias__texto">SUPLEMENTOS</h2>
-
-                    <div>
-
-                        <a href="./pages/Suplementos.html" class="btn">VER MÁS</a>
-
-                    </div>
-                </div>
-
-            </div>
-
-
-
         </section>
 
-        <hr>
     </main>
     <footer class="footer">
         <div class="footer__container">
@@ -535,9 +264,9 @@
             <H2>NAVEGACIÓN</H2>
             <nav>
                 <ul>
-                    <li><a href="/index.html">inicio</a></li>
-                    <li><a href="/pages/contacto.html">Contacto</a></li>
-                    <li>politica de devolución</li>
+                    <li><a href="./index.html">Inicio</a></li>
+                    <li><a href="./pages/contacto.html">Contacto</a></li>
+                    <li><a href="./pages/politica-devolucion.html">Politica de devolución</a></li>
                 </ul>
             </nav>
         </div>
@@ -547,9 +276,9 @@
 
             <h2>METODOS DE PAGO</h2>
             <div class="metodos_de_pago">
-                <i> <img src="./imagenes/Iconos/visa.png" alt=""></i>
-                <i><img src="./imagenes/Iconos/mastercard.png" alt=""></i>
-                <i><img src="./imagenes/Iconos/mp.png" alt=""></i>
+                <i> <img src="./Imagenes/Iconos/Visa.jpg" alt=""></i>
+                <i><img src="./Imagenes/Iconos/mastercard.jpg" alt=""></i>
+                <i><img src="./Imagenes/Iconos/Mercado-Pago.jpg" alt=""></i>
             </div>
 
 
@@ -567,6 +296,106 @@
     </script>
 
 
+    <div class="offcanvas offcanvas-top" tabindex="-1" id="searchOffcanvas" style="height: auto; max-height: 80vh;">
+        <div class="offcanvas-header justify-content-end pb-0">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+        </div>
+        <div class="offcanvas-body container pt-0 pb-5">
+            <div class="border-bottom border-dark mb-4">
+                <input type="text" id="input_buscador" class="form-control border-0 shadow-none fs-3 fw-bold px-0 py-3 bg-transparent" placeholder="¿QUÉ ESTÁS BUSCANDO?" style="outline: none;">
+            </div>
+            <div id="resultados_busqueda" class="row g-3 overflow-auto" style="max-height: 50vh;">
+            </div>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title fw-bold" style="letter-spacing: 2px;">CARRITO</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column p-0">
+            <div id="banner-envio" class="bg-light text-center py-2 text-muted border-bottom" style="font-size: 0.85rem;">
+                ¡Agrega $80.000 para obtener envío gratis!
+            </div>
+            <div id="contenedor_carrito" class="p-3 flex-grow-1 overflow-auto">
+            </div>
+            <div class="p-3 border-top bg-white">
+                <p class="text-muted mb-3" style="font-size: 0.85rem;">Los impuestos y el envío se calculan al finalizar la compra</p>
+                <button class="btn btn-dark w-100 fw-bold py-3 rounded-0 mb-2" id="finalizar_compra">
+                    Pago Seguro | $<span id="total">0</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCuenta" tabindex="-1" aria-labelledby="modalCuentaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-0 border-0 shadow-lg">
+                
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                
+                <div class="modal-body px-5 pb-5 pt-2">
+                    
+                    <div id="vista-login">
+                        <h3 class="text-center fw-bold mb-4" style="letter-spacing: 2px;">INICIAR SESIÓN</h3>
+                        
+                        <form id="form-login">
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control rounded-0 shadow-none border-dark" id="loginEmail" placeholder="nombre@ejemplo.com">
+                                <label for="loginEmail" class="text-muted">Correo electrónico</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control rounded-0 shadow-none border-dark" id="loginPassword" placeholder="Contraseña">
+                                <label for="loginPassword" class="text-muted">Contraseña</label>
+                            </div>
+                            
+                            <button type="button" class="btn btn-dark w-100 rounded-0 py-3 fw-bold mb-3" id="btn-ingresar">INGRESAR</button>
+                            
+                            <div class="text-center">
+                                <a href="#" class="text-dark text-decoration-underline" style="font-size: 0.85rem;">¿Olvidaste tu contraseña?</a>
+                            </div>
+                            
+                            <hr class="my-4">
+                            
+                            <div class="text-center">
+                                <span class="text-muted" style="font-size: 0.9rem;">¿No tienes cuenta?</span>
+                                <button type="button" id="btn-mostrar-registro" class="bg-transparent border-0 text-dark text-decoration-underline p-0 ms-1 fw-bold" style="font-size: 0.9rem;">Crear una</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="vista-registro" class="d-none">
+                        <h3 class="text-center fw-bold mb-4" style="letter-spacing: 2px;">CREAR CUENTA</h3>
+                        
+                        <form id="form-registro">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control rounded-0 shadow-none border-dark" id="regNombre" placeholder="Nombre">
+                                <label for="regNombre" class="text-muted">Nombre completo</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control rounded-0 shadow-none border-dark" id="regEmail" placeholder="nombre@ejemplo.com">
+                                <label for="regEmail" class="text-muted">Correo electrónico</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control rounded-0 shadow-none border-dark" id="regPassword" placeholder="Contraseña">
+                                <label for="regPassword" class="text-muted">Contraseña</label>
+                            </div>
+                            
+                            <button type="button" class="btn btn-dark w-100 rounded-0 py-3 fw-bold mb-3" id="btn-registrarse">REGISTRARSE</button>
+                            
+                            <div class="text-center mt-3">
+                                <button type="button" id="btn-mostrar-login" class="bg-transparent border-0 text-dark text-decoration-underline p-0 fw-bold" style="font-size: 0.9rem;">Volver a iniciar sesión</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

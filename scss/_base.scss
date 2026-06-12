@@ -4,7 +4,7 @@ $background-main: #ececec;
 $color-gris: grey;
 
 .fuente-texto {
-    font-family: Verdana, Geneva, sans-serif;
+    font-family: 'Roboto', sans-serif;
     letter-spacing: 2px;
     word-spacing: 2px;
     font-weight: 400;
@@ -16,12 +16,13 @@ $color-gris: grey;
 
 html {
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 body {
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
+    font-family: 'Roboto', sans-serif;
 }
 
 * {

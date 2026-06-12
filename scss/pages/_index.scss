@@ -7,78 +7,41 @@
 
     span{
         color: $color-blanco;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 }
 
 
 
 .contenedor__categorias{
-    margin: 3.125rem;
-    
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
-@media screen and (max-width: 590px){
 
-    .header__icons {
-        height: 1.2rem;
-        width: 6rem;
-        gap: none;
-        margin-right: 10px;
-    
-    }
-    
-    }
-
-@media screen and (max-width: 775px){
-        .carrusel__imagen{
-            object-fit: cover;
-            height: 25rem;
-        }
-
-}
-
-    
-@media screen and (max-width: 470px){
-        .carrusel__imagen{
-            height: 28rem;
-        }
-        
-    }
-
-@media screen and (max-width: 775px){
-        .nav__item{
-            
-            font-size: 1.2rem;
-            margin-right: 2rem;
-        }
-    
-    }
-    
-@media screen and (max-width: 470px){
-        .nav__item{
-            font-size: 1rem;
-            margin-right: 2rem;
-            ul{
-                gap: 0px;
-        
-            }
-        }
-    }
 .best-seller{
-    margin: 30px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-    font-size: 1.875rem;
-    margin-top: 6.25rem;
+    text-align: center;
+    margin: 6.25rem 0 2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+    position: relative;
+
+    &::after{
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: black;
+        margin: 0.8rem auto 0;
+    }
 }
 
 .contenedor-boton{
     display: flex;
     justify-content: center;
+    margin: 2rem 0;
 
 }
 
@@ -86,36 +49,11 @@
     .best-seller{
         padding-top: 30px;
         text-align: center;
-        margin: 0
-    
-    }
-
-    .tarjeta{
-        width: 16rem;
-        height: 30rem;
-        margin: 10px;
-        margin-bottom: 50px;
-        margin-top: 50px;
-        
-
-        &__imagenContainer{
-            width: 16rem;
-            height: 30rem;
-        }
+        margin: 4rem 0 1.5rem;
+        font-size: 2rem;
     }
 }
 @media screen and (max-width: 470px){
-
-    .tarjeta{
-        width: 12rem;
-        height: 20rem;
-        margin-top: 0.5rem;
-        margin: 0.5rem
-
-        {
-
-        } 
-    }    
     
     .tarjeta-cuerpo{
 
@@ -133,60 +71,63 @@
         margin-top: 30px;
     }
 }
-@media screen and (max-width: 775px){
-    .categorias{
-        width: 16rem;
-        height: 28rem;
-        margin: 1rem;
+@media screen and (max-width: 775px) {
+    .categorias {
+        height: 22rem;
 
-        &__texto{
-            font-size: medium;
-        }
-    }
-
-}
-@media screen and (max-width: 470px){
-    .categorias{
-        width: 10rem;
-        height: 23rem;
-        margin: 0rem;
-
-        &__texto{
-            font-size: small;
+        &__texto:last-child {
+            font-size: 1.1rem;
         }
     }
 }
 
+@media screen and (max-width: 470px) {
+    .categorias {
+        height: 18rem;
 
-@media screen and (max-width: 775px){
-    .footer__container{
-        display: none;
-
-        &__pagos{
-            height: 100%;
-
-            h2{
-                display: none;
-            }
+        &__texto:first-child {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
         }
 
+        &__texto:last-child {
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+        }
+
+        .btn--ghost {
+            height: 1.75rem;
+            font-size: 0.625rem;
+        }
     }
+}
 
 
-    footer{
-       justify-content: center;
-       height: auto;
-    }
-
+@media screen and (max-width: 775px){
     .metodos_de_pago i{
         height: 40px;
-        width: 100px
-        
+        width: 70px;
     }
 }
 
-.contenedor-tarjetas{
+.contenedor_tarjetas{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tarjeta-col--nueva {
+    animation: fadeInUp 0.4s ease forwards;
+}
+
