@@ -128,6 +128,17 @@ class Carrito {
             prod.cantidad = p.cantidad
             return prod
         })
+        this.actualizarBadge()
+    }
+
+    actualizarBadge() {
+        const badges = document.querySelectorAll(".cart-badge")
+        if (!badges.length) return
+        const total = this.listaCarrito.reduce((acc, p) => acc + p.cantidad, 0)
+        badges.forEach(b => {
+            b.textContent = total
+            b.classList.toggle("d-none", total === 0)
+        })
     }
 
     guardarEnStorage() {
@@ -214,6 +225,7 @@ class Carrito {
             total.innerHTML = this.calcularTotal()
         }
         this.actualizarBannerEnvio()
+        this.actualizarBadge()
     }
 
     calcularTotal(){
