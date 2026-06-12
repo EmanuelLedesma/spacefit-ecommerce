@@ -39,12 +39,12 @@ class Producto {
 
     <div class="tarjeta-cuerpo d-flex flex-column">
 
-        <h3 class="fs-6">${this.nombre}</h3>
+        <h3 class="fs-6 text-truncate-2">${this.nombre}</h3>
         <span class="fs-6 fw-bold">$${this.precio}</span>
 
     
         <div class="contenedor-boton mt-auto" id="añadir_producto-${this.id}">
-            <div class="btn btn-comprar btn-sm w-100" id="Añadir_producto-${this.id}">
+            <div class="btn btn-comprar btn-sm w-100 rounded-0" id="Añadir_producto-${this.id}">
 
             <span>Agregar al carrito</span>
 
