@@ -695,7 +695,7 @@ header {
 }
 
 /* Fix completo - alineación de botones en cards */
-.row > [class*="col"] {
+.row > [class*="col"]:has(.tarjeta) {
   display: flex;
 }
 
