@@ -1,3 +1,6 @@
+// === Mobile first (≤ 991.98px) ===
+// Underline oculto en táctil; página activa se marca con bold.
+
 .nav-link span {
     position: relative;
     display: inline-block;
@@ -7,19 +10,37 @@
         position: absolute;
         left: 0;
         bottom: -2px;
-        width: 0;
         height: 2px;
         background-color: #000;
-        transition: width 0.3s ease-in-out;
+        display: none;
     }
 }
 
-.nav-link.active span::after {
-    width: 100%;
+.nav-link.active span {
+    font-weight: 700;
 }
 
-@media (hover: hover) {
-    .nav-link:hover span::after {
+// === Desktop (≥ 992px) ===
+// Subrayado animado solo con dispositivo que soporte hover.
+
+@media (min-width: 992px) {
+    .nav-link span::after {
+        display: block;
+        width: 0;
+        transition: width 0.3s ease-in-out;
+    }
+
+    .nav-link.active span::after {
         width: 100%;
+    }
+
+    .nav-link.active span {
+        font-weight: inherit;
+    }
+
+    @media (hover: hover) {
+        .nav-link:hover span::after {
+            width: 100%;
+        }
     }
 }
