@@ -184,7 +184,7 @@ class Carrito {
                     <button id="mas-${producto.id}" type="button" class="border-0 bg-transparent flex-fill h-100 fs-5 d-flex align-items-center justify-content-center" style="color: black; cursor: pointer; outline: none;">+</button>
                   </div>
 
-                  <button id="eliminar-${producto.id}" class="bg-transparent border-0 text-muted text-decoration-underline p-0" style="font-size: 0.8rem; cursor: pointer;">Eliminar</button>
+                  <button id="eliminar-${producto.id}" class="btn-eliminar bg-transparent border-0 text-dark p-0" style="font-size: 0.8rem; cursor: pointer;"><span>Eliminar</span></button>
 
                 </div>
               </div>

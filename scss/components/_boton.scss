@@ -101,3 +101,26 @@
     font-size: 0.8rem;
 }
 
+.btn-eliminar span {
+    position: relative;
+    display: inline-block;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        height: 2px;
+        background-color: #000;
+        display: block;
+        width: 0;
+        transition: width 0.3s ease-in-out;
+    }
+}
+
+@media (hover: hover) {
+    .btn-eliminar:hover span::after {
+        width: 100%;
+    }
+}
+
