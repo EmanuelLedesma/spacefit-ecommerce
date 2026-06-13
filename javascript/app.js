@@ -261,8 +261,8 @@ const p2 = new Producto(2, "Remera Shark slimfit", 8000, "../Imagenes/remeras/Re
 const p3 = new Producto(3, "Hummingbird hoodie", 17000, "../Imagenes/Sudaderas/HUMMINGBIRD-hoodie.png", "buzo corto y lindo para chicas")
 const p4 = new Producto(4, "Roman tees Youngla", 14000, "../Imagenes/remeras/Roman-tees-Youngla.png", "Remera essensial de alta calidad y algodon que tiene que estar en tu guardaropa de youngla")
 const p5 = new Producto(5, "Momentum tanks", 14000, "../Imagenes/Musculosas/MOMENTUM-TANKS.png", "Musculosa cerrada negra Youngla")
-const p6 = new Producto(6, "Collegiate Hoodie", 20000, "../Imagenes/Sudaderas/COLLEGIATE-HOODIE.png", "buzo gymshark color crema estiloso y comodo para salir o entrenar")
-const p7 = new Producto(7, "Short negro Youngla", 15000, "../Imagenes/Pantalones/Short-negro-Youngla.png", "Short negro Youngla de alta calidad para entrenar y tener una buena movilidad")
+const p6 = new Producto(6, "Cloud 9 Hoodie", 20000, "../Imagenes/Sudaderas/Cloud 9 Hoodie.webp", "Cloud 9 hoodie comoda y estilosa para el dia a dia")
+const p7 = new Producto(7, "Ultra Lightweight Fitness Shorts", 15000, "../Imagenes/Pantalones/Ultra Lightweight Fitness Shorts.webp", "Ultra Lightweight Fitness Shorts comodos y frescos para entrenar")
 const p8 = new Producto(8, "Straps wildfitness", 7000, "../Imagenes/accesorios/Straps.png", "Straps wildfitness para un mejor rendimiento en ejercicios que carguen el antebrazo")
 
 const carrito = new Carrito()

@@ -60,3 +60,18 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
+.img-contain {
+    object-fit: contain !important;
+    aspect-ratio: auto !important;
+    padding: 1.5rem;
+    background-color: #ffffff;
+}
+
+.img-scale-down {
+    transform: scale(0.85) !important;
+}
+
+.tarjeta:hover .img-scale-down {
+    transform: scale(0.95) !important;
+}

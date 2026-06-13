@@ -283,6 +283,11 @@ main {
   transform: scale(1.06);
 }
 
+.categorias--suplementos img {
+  object-fit: contain !important;
+  padding: 2rem;
+}
+
 .footer {
   display: flex;
   flex-direction: row;
@@ -591,6 +596,21 @@ header {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.img-contain {
+  object-fit: contain !important;
+  aspect-ratio: auto !important;
+  padding: 1.5rem;
+  background-color: #ffffff;
+}
+
+.img-scale-down {
+  transform: scale(0.85) !important;
+}
+
+.tarjeta:hover .img-scale-down {
+  transform: scale(0.95) !important;
 }
 
 .cuotas {
