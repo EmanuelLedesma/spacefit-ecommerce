@@ -16,12 +16,11 @@ $color-gris: grey;
 
 html {
     width: 100%;
-    overflow-x: clip;
 }
 
 body {
     width: 100%;
-    overflow-x: clip;
+    overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
 }
 

@@ -11,12 +11,11 @@
 
 html {
   width: 100%;
-  overflow-x: clip;
 }
 
 body {
   width: 100%;
-  overflow-x: clip;
+  overflow-x: hidden;
   font-family: "Roboto", sans-serif;
 }
 
@@ -386,6 +385,14 @@ header {
 .offcanvas,
 .modal {
   z-index: 1060 !important;
+}
+
+#cartOffcanvas {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 100vh !important;
 }
 
 .header {

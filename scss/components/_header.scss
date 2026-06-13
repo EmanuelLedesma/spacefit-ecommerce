@@ -21,6 +21,14 @@ header > div:first-child {
     z-index: 1060 !important;
 }
 
+#cartOffcanvas {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    height: 100vh !important;
+}
+
 .header {
     justify-content: space-between;
     background-color: $color-blanco;
