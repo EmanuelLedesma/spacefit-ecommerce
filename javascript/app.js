@@ -153,10 +153,9 @@ class Carrito {
     }
 
     agregar(productoAgregar) {
-        let existeProducto = this.listaCarrito.some(producto => producto.id == productoAgregar.id);
-        if (existeProducto) {
-            let productoEncontrado = this.listaCarrito.find(producto => producto.id == productoAgregar.id);
-            productoEncontrado.cantidad++
+        const encontrado = this.listaCarrito.find(producto => producto.id == productoAgregar.id);
+        if (encontrado) {
+            encontrado.cantidad++
         } else {
             this.listaCarrito.push(productoAgregar);
         }
