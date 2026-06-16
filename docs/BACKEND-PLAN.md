@@ -1,72 +1,161 @@
-# Backend Spacefit — Plan MVP
+# Plan Refactor — Spacefit Ecommerce
 
 ## Stack
 
 - **Runtime:** Node.js
-- **Framework:** Express (única dependencia nueva)
-- **Persistencia:** Archivos JSON (`data/productos.json`, `data/usuarios.json`)
-- **Hash de passwords:** `crypto.scryptSync` (stdlib, cero dependencias extra)
-- **Token de sesión:** UUID simple (sin JWT, sin passport)
-- **Estructura:** 1 archivo (`server.js`), cero abstracciones
+- **Framework:** Express
+- **Persistencia:** Archivos JSON (`data/*.json`)
+- **Auth:** UUID en `usuarios[].tokens[]` (sin JWT, sin sessions)
+- **Hash:** `crypto.scryptSync` (stdlib)
+- **Imágenes:** Multer a `Imagenes/`
 
 ## Archivos
 
-```
+```text
 spacefit-ecommerce/
-  server.js          ← Todo acá: setup Express, rutas, handlers
+  server.js                   ← Entry point
+  routes/
+    auth.js                   ← POST /api/auth/login
+    productos.js              ← CRUD /api/productos
+    categorias.js             ← CRUD /api/categorias
+  middleware/
+    auth.js                   ← verifyToken + requireAdmin
   data/
-    productos.json   ← Catálogo extraído de app.js
-    usuarios.json    ← Se crea solo al primer registro
+    seed-admin.js             ← Script único: genera admin hasheado en usuarios.json
+    usuarios.json             ← Creado por seed-admin.js (hash, nunca texto plano)
+    productos.json            ← Catálogo extraído de HTML + app.js
+    categorias.json           ← Seed inicial
+  Imagenes/                   ← Subida de imágenes vía multer
+  javascript/
+    app.js                    ← Refactor: fetch a API, navbar dinámico
+    admin.js                  ← Login + CRUD admin
+  admin.html                  ← Panel admin
+  categoria.html              ← Template única reemplaza 11 páginas
+  index.html                  ← Home (productos destacados desde API)
 ```
 
 ## Endpoints
 
-| Método | Ruta | Body / Headers | Respuesta |
-|--------|------|----------------|-----------|
-| `POST` | `/api/register` | Body: `{ nombre, email, password }` | `{ token, usuario }` |
-| `POST` | `/api/login` | Body: `{ email, password, carritoLocal }` | `{ token, usuario, carritoFusionado }` |
-| `GET` | `/api/productos` | — | `[ ... productos ]` |
-| `GET` | `/api/carrito` | Headers: `Authorization: Bearer <token>` | `[ ... items ]` |
-| `POST` | `/api/carrito` | Body: `{ productoId, cantidad }` + Headers: `Authorization: Bearer <token>` | Carrito actualizado |
-| `DELETE` | `/api/carrito/:productoId` | Headers: `Authorization: Bearer <token>` | Carrito actualizado |
+### Auth
 
-## Contrato de errores
+| Método | Ruta              | Body                 | Respuesta           |
+| ------ | ----------------- | -------------------- | ------------------- |
+| `POST` | `/api/auth/login` | `{ email, password }` | `{ token, usuario }` |
 
-Todos los errores devuelven `{ error: "mensaje" }` con el código HTTP correspondiente:
+### Productos
 
-| Código | Situación |
-|--------|-----------|
-| `409` | `POST /api/register` — el email ya existe |
-| `401` | `POST /api/login` — email no existe o password no coincide |
-| `401` | Rutas protegidas — token faltante o inválido |
-| `500` | Error inesperado del servidor |
+| Método   | Ruta                            | Auth         | Respuesta            |
+| -------- | ------------------------------- | ------------ | -------------------- |
+| `GET`    | `/api/productos`                | —            | `[ ... productos ]`  |
+| `GET`    | `/api/productos?categoria=slug` | —            | Productos filtrados  |
+| `GET`    | `/api/productos?destacado=true` | —            | Solo destacados      |
+| `POST`   | `/api/productos`                | requireAdmin | Producto creado      |
+| `PUT`    | `/api/productos/:id`            | requireAdmin | Producto actualizado |
+| `DELETE` | `/api/productos/:id`            | requireAdmin | Producto eliminado   |
 
-## Lógica de auth y seguridad
+### Categorías
 
-**Register:** validar campos → check si email existe → `crypto.scryptSync` para hash con salt → guardar en `usuarios.json` → generar UUID token y agregarlo al array `tokens[]` del usuario → devolver `{ token, usuario }`.
+| Método   | Ruta                  | Auth         | Respuesta             |
+| -------- | --------------------- | ------------ | --------------------- |
+| `GET`    | `/api/categorias`     | —            | `[ ... categorias ]`  |
+| `POST`  | `/api/categorias`     | requireAdmin | Categoría creada      |
+| `PUT`    | `/api/categorias/:id` | requireAdmin | Categoría actualizada |
+| `DELETE`| `/api/categorias/:id` | requireAdmin | Categoría eliminada   |
 
-**Login y fusión:** buscar por email → comparar hash → generar UUID token y agregarlo al array `tokens[]` → recibir carrito de localStorage y fusionarlo con el guardado en el JSON → devolver `{ token, usuario, carritoFusionado }`.
+### Imágenes
 
-**Tokens múltiples (sesiones simultáneas):** El campo `token` en `usuarios.json` es un array `tokens[]`. Cada login agrega un nuevo UUID al array en lugar de sobreescribir. La validación en rutas protegidas acepta cualquier token del array. Al cerrar sesión se elimina solo ese token del array.
+| Método | Ruta          | Auth         | Respuesta                             |
+| ------ | ------------- | ------------ | ------------------------------------- |
+| `POST` | `/api/upload` | requireAdmin | `{ ruta: "../Imagenes/archivo.png" }` |
 
-**Seguridad:** El frontend **jamás** pasa el token por la URL. Se envía estrictamente a través del header `Authorization: Bearer <token>`.
+## Auth — verifyToken + requireAdmin
 
-**CORS:** El middleware CORS manual en `server.js` responde `200` a requests con método `OPTIONS` (preflight) antes de que lleguen a las rutas. Sin esto, `DELETE` y requests con header `Authorization` son bloqueados por el browser.
+- **verifyToken(token):** busca
+  `usuarios.find(u => u.tokens.includes(token))` y devuelve el usuario
+  o `null`.
+- **requireAdmin:** middleware que lee `Authorization: Bearer <uuid>`,
+  llama a verifyToken, y si no existe o `esAdmin !== true`, responde
+  `401`/`403`.
 
-## Conexión con frontend
+## Frontend — cambios clave
 
-- Los `alert()` simulados de login/registro en `app.js` se reemplazan por `fetch()` a los endpoints.
-- En las peticiones protegidas (rutas de carrito), el frontend inyecta el token leyéndolo de `localStorage` hacia los headers de la petición.
-- Los productos se obtienen de `GET /api/productos` en lugar de estar hardcodeados.
-- El carrito funciona offline en `localStorage`. Al momento de hacer login, ese `localStorage` se envía al backend para consolidarse con la base de datos (resolución del carrito híbrido).
-- **Manejo de 401:** si cualquier respuesta protegida devuelve `401`, el frontend borra solo el `token` de `localStorage` (NO toca `listaCarrito`), limpia el estado de usuario en memoria y muestra el modal de login. El carrito offline sobrevive intacto. Al re-loguearse, entra la lógica de fusión del paso 7.
+### app.js (refactor)
+
+- `ControladorProductos` ya no tiene productos hardcodeados. `init()`
+  hace `fetch("/api/productos?destacado=true")` para home y
+  `fetch("/api/productos?categoria=X")` para categoría.
+- Navbar se construye dinámicamente desde `GET /api/categorias`.
+
+### categoria.html (nuevo)
+
+- Reemplaza `hombres.html`, `mujeres.html`, `remeras.html`, etc.
+- Lee `?slug=` de la URL, fetchea productos por categoría, renderiza grilla.
+- Misma estructura de navbar + carrito que las páginas actuales.
+
+### admin.html + admin.js (nuevo)
+
+- Login: pide email+password, recibe UUID, lo guarda en localStorage.
+- Panel con tabla de productos: crear, editar, eliminar, toggle destacado.
+- Formulario con `<input type="file">` para subir imagen.
+- Gestión de categorías: crear/renombrar/eliminar.
+
+### Eliminar
+
+- `pages/hombres.html`, `pages/mujeres.html`, etc. (11 páginas de categoría).
+- Productos hardcodeados en `app.js` (líneas 258-278).
+
+## Migración de datos
+
+Extraer todos los productos de:
+
+- `javascript/app.js` (líneas 258-265)
+- `pages/hombres.html`, `pages/mujeres.html`, etc. (tarjetas HTML)
+
+Unificarlos en `data/productos.json` con schema:
+
+```json
+{
+  "id": 1,
+  "nombre": "Yogger ambitius Youngla",
+  "precio": 30000,
+  "imagen": "../Imagenes/Pantalones/Yogger-ambitius-Youngla.png",
+  "descripcion": "...",
+  "categoria": "pantalones",
+  "destacado": false
+}
+```
+
+## Seed admin
+
+El admin inicial se genera con un script descartable (`data/seed-admin.js`) que:
+
+1. Toma credenciales fijas (`admin@spacefit.com` / `admin123`)
+2. Genera el hash con `crypto.scryptSync` (mismo salt+scrypt que usa `routes/auth.js`)
+3. Escribe `data/usuarios.json` con el usuario, `esAdmin: true`, `tokens: []`
+
+Se corre una vez con `node data/seed-admin.js` y se elimina o se ignora después.
+Nunca se guarda el password en texto plano en el repo.
+El hash generado es estable porque usa un salt fijo (consistente con `routes/auth.js`).
+
+Las credenciales se documentan en el README como "usuario demo" para que el reclutador entre sin pedir acceso.
+
+## Notas de implementación
+
+- **imgPath() no se toca.** Ya resuelve rutas relativas según la página. `categoria.html` está en la raíz como `index.html`, el helper corrige `../Imagenes/` a `./Imagenes/` automáticamente.
+- **Carrito intacto.** Sigue con localStorage, fuera del alcance del refactor.
+- **Paginación client-side.** El slice existente en `ControladorProductos` (4 en 4) es suficiente para el catálogo actual (~40-50 productos). Paginación backend sería sobreingeniería acá.
+- **Login existente sin duplicar.** El modal de login actual se mantiene (mismo HTML, mismo flujo visual). Solo cambia el handler del submit: en vez de `alert()`, hace fetch a `POST /api/auth/login`, guarda el token, y si `usuario.esAdmin === true` redirige a `admin.html`; si no, cierra el modal y continúa como cliente logueado.
 
 ## Orden de implementación
 
-1. `server.js` con Express, CORS manual (sin package), JSON body parser.
-2. `POST /api/register`
-3. `POST /api/login` (aún sin lógica de fusión de carrito).
-4. Extraer `data/productos.json` + `GET /api/productos`.
-5. Endpoints de carrito (`GET/POST/DELETE`) validando el header `Authorization`.
-6. Conectar frontend (reemplazar `alert()` por `fetch()` e implementar envío de headers).
-7. Fase final: implementar la lógica de fusión del carrito local con el carrito del backend durante el login.
+1. Seed admin (`node data/seed-admin.js` genera `data/usuarios.json`)
+2. Seed data (`data/productos.json`, `data/categorias.json`)
+3. Middleware auth (`verifyToken` + `requireAdmin`)
+4. Ruta `POST /api/auth/login`
+5. Ruta `GET /api/productos` (con filtros)
+6. Ruta `POST /api/upload` (multer)
+7. Rutas protegidas: POST/PUT/DELETE `/api/productos`, CRUD `/api/categorias`
+8. Refactor `app.js` (fetch a API, navbar dinámico)
+9. `categoria.html` (template única)
+10. `admin.html` + `admin.js` (panel)
+11. Eliminar páginas estáticas de categoría
