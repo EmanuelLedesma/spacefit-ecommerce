@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "nombre": "Remeras",
+    "slug": "remeras"
+  },
+  {
+    "id": 2,
+    "nombre": "Pantalones",
+    "slug": "pantalones"
+  },
+  {
+    "id": 3,
+    "nombre": "Sudaderas",
+    "slug": "sudaderas"
+  },
+  {
+    "id": 4,
+    "nombre": "Musculosas",
+    "slug": "musculosas"
+  },
+  {
+    "id": 5,
+    "nombre": "Accesorios",
+    "slug": "accesorios"
+  },
+  {
+    "id": 6,
+    "nombre": "Suplementos",
+    "slug": "suplementos"
+  }
+]
