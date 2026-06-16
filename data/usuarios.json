@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "email": "admin@spacefit.com",
+    "password": "b64adbc4765bde796dabacd865e57fded1d01c592afc8976b10803fe62fc0fd0d12e7b7526e5db15d46c99e86b99f0f9323faec377dc54340826f32c87a10841",
+    "salt": "61aed6aeaceef4401ea87a07644aefdd",
+    "nombre": "Admin",
+    "esAdmin": true,
+    "tokens": []
+  }
+]

@@ -38,14 +38,14 @@ spacefit-ecommerce/
 
 ### Auth
 
-| Método | Ruta              | Body                 | Respuesta           |
-| ------ | ----------------- | -------------------- | ------------------- |
+| Método | Ruta              | Body                  | Respuesta            |
+|--------|-------------------|-----------------------|----------------------|
 | `POST` | `/api/auth/login` | `{ email, password }` | `{ token, usuario }` |
 
 ### Productos
 
 | Método   | Ruta                            | Auth         | Respuesta            |
-| -------- | ------------------------------- | ------------ | -------------------- |
+|----------|---------------------------------|--------------|----------------------|
 | `GET`    | `/api/productos`                | —            | `[ ... productos ]`  |
 | `GET`    | `/api/productos?categoria=slug` | —            | Productos filtrados  |
 | `GET`    | `/api/productos?destacado=true` | —            | Solo destacados      |
@@ -56,16 +56,16 @@ spacefit-ecommerce/
 ### Categorías
 
 | Método   | Ruta                  | Auth         | Respuesta             |
-| -------- | --------------------- | ------------ | --------------------- |
+|----------|-----------------------|--------------|-----------------------|
 | `GET`    | `/api/categorias`     | —            | `[ ... categorias ]`  |
-| `POST`  | `/api/categorias`     | requireAdmin | Categoría creada      |
+| `POST`   | `/api/categorias`     | requireAdmin | Categoría creada      |
 | `PUT`    | `/api/categorias/:id` | requireAdmin | Categoría actualizada |
-| `DELETE`| `/api/categorias/:id` | requireAdmin | Categoría eliminada   |
+| `DELETE` | `/api/categorias/:id` | requireAdmin | Categoría eliminada   |
 
 ### Imágenes
 
 | Método | Ruta          | Auth         | Respuesta                             |
-| ------ | ------------- | ------------ | ------------------------------------- |
+|--------|---------------|--------------|---------------------------------------|
 | `POST` | `/api/upload` | requireAdmin | `{ ruta: "../Imagenes/archivo.png" }` |
 
 ## Auth — verifyToken + requireAdmin
@@ -135,7 +135,7 @@ El admin inicial se genera con un script descartable (`data/seed-admin.js`) que:
 
 Se corre una vez con `node data/seed-admin.js` y se elimina o se ignora después.
 Nunca se guarda el password en texto plano en el repo.
-El hash generado es estable porque usa un salt fijo (consistente con `routes/auth.js`).
+El hash generado es único por ejecución porque usa `crypto.randomBytes` como salt (cada vez que se corre seed-admin.js produce un hash distinto para la misma contraseña).
 
 Las credenciales se documentan en el README como "usuario demo" para que el reclutador entre sin pedir acceso.
 
