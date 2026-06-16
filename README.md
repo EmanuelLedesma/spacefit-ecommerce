@@ -1,16 +1,14 @@
-<div align="center">
-  <h1>🏋️ SPACEFIT</h1>
-  <p><strong>E-commerce de indumentaria fitness</strong></p>
-  <p>
-    <img src="https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=fff" alt="HTML5">
-    <img src="https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=fff" alt="CSS3">
-    <img src="https://img.shields.io/badge/Sass-C69?logo=sass&logoColor=fff" alt="Sass">
-    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000" alt="JavaScript">
-    <img src="https://img.shields.io/badge/Bootstrap_5-7952B3?logo=bootstrap&logoColor=fff" alt="Bootstrap 5">
-    <img src="https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=fff" alt="Node.js">
-    <img src="https://img.shields.io/badge/Express-000?logo=express&logoColor=fff" alt="Express">
-  </p>
-</div>
+# 🏋️ SPACEFIT
+
+**E-commerce de indumentaria fitness**
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=fff)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=fff)
+![Sass](https://img.shields.io/badge/Sass-C69?logo=sass&logoColor=fff)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)
+![Bootstrap 5](https://img.shields.io/badge/Bootstrap_5-7952B3?logo=bootstrap&logoColor=fff)
+![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=fff)
+![Express](https://img.shields.io/badge/Express-000?logo=express&logoColor=fff)
 
 ---
 
@@ -22,8 +20,8 @@ SPACEFIT es un e-commerce de ropa y accesorios de gimnasio con **frontend en Jav
 
 ## ✨ Funcionalidades
 
-| | |
-|---|---|---|
+| Característica | Descripción |
+|---|---|
 | 🛒 **Carrito dinámico** | Agregar, quitar, sumar y restar productos. Persiste en localStorage aunque cierres el navegador. |
 | 🔍 **Búsqueda en vivo** | Filtra productos por nombre y descripción al instante desde cualquier página. |
 | 📱 **Responsive total** | Header, grillas y layouts adaptados a mobile, tablet y desktop sin puntos de quiebre forzados. |
